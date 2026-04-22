@@ -19,3 +19,5 @@
 - GitLab CI: xem tab CI/CD trên GitLab# IoT-Lab-Chapter4-N23DCCI022
 Bài tập IoT Chapter 4 — QEMU + Wokwi + Sense HAT
  
+![GitHub Actions](https://github.com/Trunhout/IoT-Lab-Chapter4-N23DCCI022/actions/workflows/ci.yml/badge.svg)
+![GitLab CI](https://gitlab.com/Trunhout/iot-lab-chapter4/badges/main/pipeline.svg)
