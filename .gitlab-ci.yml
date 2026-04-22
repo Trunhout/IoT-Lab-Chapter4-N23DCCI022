@@ -3,6 +3,36 @@ stages:
   - test
   - verify
 
+flake8-lint:
+  stage: lint
+  image: python:3.11-slim
+  script:
+    - pip install flake8
+    - flake8 BT1_QEMU_SystemMonitor/ --max-line-length=120
+    - flake8 BT2_QEMU_SensorSim/ --max-line-length=120
+  tags: []
+
+test-sensor-sim:
+  stage: test
+  image: python:3.11-slim
+  script:
+    - apt-get update && apt-get install -y gcc python3-dev
+    - pip install psutil
+    - cd BT2_QEMU_SensorSim && python sensor_sim.py
+  tags: []
+
+check-structure:
+  stage: verify
+  image: alpine:latest
+  script:
+    - test -f BT1_QEMU_SystemMonitor/system_monitor.py || exit 1
+    - test -f BT2_QEMU_SensorSim/sensor_sim.py || exit 1
+    - test -f README.md || exit 1
+  tags: []stages:
+  - lint
+  - test
+  - verify
+
 # ===== STAGE 1: LINT =====
 flake8-lint:
   stage: lint
